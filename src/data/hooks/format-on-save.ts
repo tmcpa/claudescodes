@@ -11,6 +11,7 @@ export const formatOnSaveHook: Hook = {
   author: {
     name: "Claude Code Community",
   },
+  documentationUrl: "https://docs.anthropic.com/en/docs/claude-code/hooks",
   script: `#!/bin/bash
 # Format on Save Hook
 # Runs Prettier on files after they are written or edited

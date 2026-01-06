@@ -11,6 +11,7 @@ export const lintOnEditHook: Hook = {
   author: {
     name: "Claude Code Community",
   },
+  documentationUrl: "https://docs.anthropic.com/en/docs/claude-code/hooks",
   script: `#!/bin/bash
 # Lint on Edit Hook
 # Runs ESLint on files after they are edited

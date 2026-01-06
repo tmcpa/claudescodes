@@ -9,6 +9,7 @@ export const nextjsPrompt: Prompt = {
   author: {
     name: "Claude Code Community",
   },
+  documentationUrl: "https://docs.anthropic.com/en/docs/claude-code/memory",
   content: `# Next.js Project
 
 This is a Next.js 14+ project using the App Router architecture.

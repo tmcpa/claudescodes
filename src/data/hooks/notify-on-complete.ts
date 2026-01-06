@@ -9,6 +9,7 @@ export const notifyOnCompleteHook: Hook = {
   author: {
     name: "Claude Code Community",
   },
+  documentationUrl: "https://docs.anthropic.com/en/docs/claude-code/hooks",
   script: `#!/bin/bash
 # Desktop Notification Hook
 # Sends a notification when Claude Code stops

@@ -8,6 +8,7 @@ export const reviewSkill: Skill = {
   author: {
     name: "Claude Code Community",
   },
+  documentationUrl: "https://docs.anthropic.com/en/docs/claude-code/skills",
   content: `# Code Review Skill
 
 Perform comprehensive code reviews with structured feedback.

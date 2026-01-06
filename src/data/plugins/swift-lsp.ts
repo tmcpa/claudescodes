@@ -10,6 +10,8 @@ export const swiftLspPlugin: Plugin = {
     name: "Anthropic",
     url: "https://github.com/anthropics",
   },
+  repositoryUrl: "https://github.com/anthropics/claude-code",
+  documentationUrl: "https://docs.anthropic.com/en/docs/claude-code/plugins",
   installCommand: "claude plugins add swift-lsp@claude-plugins-official",
   config: `{
   "enabledPlugins": {

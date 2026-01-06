@@ -8,6 +8,7 @@ export const reactNativePrompt: Prompt = {
   author: {
     name: "Claude Code Community",
   },
+  documentationUrl: "https://docs.anthropic.com/en/docs/claude-code/memory",
   content: `# React Native / Expo Project
 
 This is a React Native project built with Expo.

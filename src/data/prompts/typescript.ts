@@ -9,6 +9,7 @@ export const typescriptPrompt: Prompt = {
   author: {
     name: "Claude Code Community",
   },
+  documentationUrl: "https://docs.anthropic.com/en/docs/claude-code/memory",
   content: `# TypeScript Project
 
 This project uses TypeScript with strict configuration.

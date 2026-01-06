@@ -9,6 +9,7 @@ export const commitSkill: Skill = {
   author: {
     name: "Claude Code Community",
   },
+  documentationUrl: "https://docs.anthropic.com/en/docs/claude-code/skills",
   content: `# Git Commit Skill
 
 Create well-formatted git commits following conventional commit standards.

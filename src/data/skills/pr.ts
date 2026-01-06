@@ -9,6 +9,7 @@ export const prSkill: Skill = {
   author: {
     name: "Claude Code Community",
   },
+  documentationUrl: "https://docs.anthropic.com/en/docs/claude-code/skills",
   content: `# Pull Request Skill
 
 Create well-documented pull requests with comprehensive descriptions.

@@ -8,6 +8,7 @@ export const goPrompt: Prompt = {
   author: {
     name: "Claude Code Community",
   },
+  documentationUrl: "https://docs.anthropic.com/en/docs/claude-code/memory",
   content: `# Go Project
 
 This is a Go project following idiomatic Go patterns.

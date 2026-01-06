@@ -9,6 +9,7 @@ export const pythonPrompt: Prompt = {
   author: {
     name: "Claude Code Community",
   },
+  documentationUrl: "https://docs.anthropic.com/en/docs/claude-code/memory",
   content: `# Python Project
 
 This is a Python project following modern best practices.
