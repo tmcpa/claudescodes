@@ -9,7 +9,7 @@ export const pluginsHowTo: HowTo = {
   tags: ["plugins", "extensions", "customization", "tools"],
   featured: false,
   author: {
-    name: "Claude's Codes",
+    name: "Claude Directory",
     url: "https://github.com/tmcpa/claudescodes",
   },
   content: `# Installing and Using Plugins

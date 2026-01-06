@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Claude's Codes",
+  title: "Claude Directory",
   description:
     "Find the best prompts, MCP servers, hooks, and skills for Claude Code. A community-driven directory for Claude Code configurations.",
   keywords: [

@@ -9,7 +9,7 @@ export const advancedFeaturesHowTo: HowTo = {
   tags: ["advanced", "planning", "thinking", "background-tasks"],
   featured: false,
   author: {
-    name: "Claude's Codes",
+    name: "Claude Directory",
     url: "https://github.com/tmcpa/claudescodes",
   },
   content: `# Advanced Claude Code Features

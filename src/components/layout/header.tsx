@@ -27,7 +27,7 @@ export function Header() {
         <Link href="/" className="mr-6 flex items-center space-x-2">
           <Terminal className="h-6 w-6" />
           <span className="hidden font-bold sm:inline-block">
-            Claude&apos;s Codes
+            Claude Directory
           </span>
         </Link>
 

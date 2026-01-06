@@ -9,7 +9,7 @@ export const slashCommandsHowTo: HowTo = {
   tags: ["slash-commands", "automation", "productivity", "customization"],
   featured: true,
   author: {
-    name: "Claude's Codes",
+    name: "Claude Directory",
     url: "https://github.com/tmcpa/claudescodes",
   },
   content: `# Creating Custom Slash Commands

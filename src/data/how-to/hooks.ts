@@ -9,7 +9,7 @@ export const hooksHowTo: HowTo = {
   tags: ["hooks", "automation", "events", "scripts"],
   featured: false,
   author: {
-    name: "Claude's Codes",
+    name: "Claude Directory",
     url: "https://github.com/tmcpa/claudescodes",
   },
   content: `# Automating with Hooks

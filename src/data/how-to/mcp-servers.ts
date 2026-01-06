@@ -9,7 +9,7 @@ export const mcpServersHowTo: HowTo = {
   tags: ["mcp", "integration", "tools", "servers"],
   featured: true,
   author: {
-    name: "Claude's Codes",
+    name: "Claude Directory",
     url: "https://github.com/tmcpa/claudescodes",
   },
   content: `# Setting Up MCP Servers

@@ -9,7 +9,7 @@ export const skillsHowTo: HowTo = {
   tags: ["skills", "automation", "advanced", "customization"],
   featured: false,
   author: {
-    name: "Claude's Codes",
+    name: "Claude Directory",
     url: "https://github.com/tmcpa/claudescodes",
   },
   content: `# Building Custom Skills

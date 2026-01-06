@@ -1,8 +1,8 @@
-# Claude's Codes
+# Claude Directory
 
 A community-driven directory for Claude Code configurations. Find and share prompts, MCP servers, hooks, skills, and settings.
 
-**[Live Site](https://claudescodes.com)** · **[Contributing Guide](CONTRIBUTING.md)** · **[Claude Code Docs](https://docs.anthropic.com/en/docs/claude-code)**
+**[Live Site](https://claudedirectory.org)** · **[Contributing Guide](CONTRIBUTING.md)** · **[Claude Code Docs](https://docs.anthropic.com/en/docs/claude-code)**
 
 ## What is Claude Code?
 

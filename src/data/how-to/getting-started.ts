@@ -9,7 +9,7 @@ export const gettingStartedHowTo: HowTo = {
   tags: ["getting-started", "installation", "setup", "beginner"],
   featured: true,
   author: {
-    name: "Claude's Codes",
+    name: "Claude Directory",
     url: "https://github.com/tmcpa/claudescodes",
   },
   content: `# Getting Started with Claude Code
