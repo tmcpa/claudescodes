@@ -7,8 +7,11 @@ export const postgresServer: MCPServer = {
   tags: ["database", "postgres", "sql"],
   featured: true,
   author: {
-    name: "MCP Community",
+    name: "Model Context Protocol",
+    url: "https://github.com/modelcontextprotocol",
   },
+  repositoryUrl: "https://github.com/modelcontextprotocol/servers/tree/main/src/postgres",
+  documentationUrl: "https://github.com/modelcontextprotocol/servers#postgres",
   installCommand: "npm install -g @modelcontextprotocol/server-postgres",
   config: `{
   "mcpServers": {

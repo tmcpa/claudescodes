@@ -4,7 +4,13 @@ export interface Author {
   avatar?: string;
 }
 
-export interface Prompt {
+export interface SourceLinks {
+  sourceUrl?: string; // Direct link to the actual file (e.g., SKILL.md, README)
+  repositoryUrl?: string; // Link to parent repository for attribution
+  documentationUrl?: string; // Link to official documentation
+}
+
+export interface Prompt extends SourceLinks {
   slug: string;
   title: string;
   description: string;
@@ -14,7 +20,7 @@ export interface Prompt {
   featured?: boolean;
 }
 
-export interface MCPServer {
+export interface MCPServer extends SourceLinks {
   slug: string;
   title: string;
   description: string;
@@ -25,7 +31,7 @@ export interface MCPServer {
   featured?: boolean;
 }
 
-export interface Hook {
+export interface Hook extends SourceLinks {
   slug: string;
   title: string;
   description: string;
@@ -37,7 +43,7 @@ export interface Hook {
   featured?: boolean;
 }
 
-export interface Skill {
+export interface Skill extends SourceLinks {
   slug: string;
   title: string;
   description: string;
@@ -47,7 +53,7 @@ export interface Skill {
   featured?: boolean;
 }
 
-export interface Plugin {
+export interface Plugin extends SourceLinks {
   slug: string;
   title: string;
   description: string;
@@ -58,7 +64,7 @@ export interface Plugin {
   featured?: boolean;
 }
 
-export interface HowTo {
+export interface HowTo extends SourceLinks {
   slug: string;
   title: string;
   description: string;

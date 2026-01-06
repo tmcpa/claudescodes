@@ -6,7 +6,7 @@ import { Separator } from "@/components/ui/separator";
 import { CodeBlock } from "@/components/code-block";
 import { CopyButton } from "@/components/copy-button";
 import { hooks, getHookBySlug } from "@/data/hooks";
-import { ArrowLeft, Webhook, User } from "lucide-react";
+import { ArrowLeft, Webhook, User, ExternalLink, BookOpen, Github } from "lucide-react";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -101,6 +101,47 @@ export default async function HookDetailPage(props: Props) {
             )}
           </span>
         </div>
+
+        {(hook.sourceUrl || hook.repositoryUrl || hook.documentationUrl) && (
+          <div className="flex flex-wrap gap-3">
+            {hook.sourceUrl && (
+              <a
+                href={hook.sourceUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
+              >
+                <Github className="h-4 w-4" />
+                View Source
+                <ExternalLink className="h-3 w-3" />
+              </a>
+            )}
+            {hook.repositoryUrl && (
+              <a
+                href={hook.repositoryUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
+              >
+                <Github className="h-4 w-4" />
+                Repository
+                <ExternalLink className="h-3 w-3" />
+              </a>
+            )}
+            {hook.documentationUrl && (
+              <a
+                href={hook.documentationUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
+              >
+                <BookOpen className="h-4 w-4" />
+                Documentation
+                <ExternalLink className="h-3 w-3" />
+              </a>
+            )}
+          </div>
+        )}
 
         <Separator />
 

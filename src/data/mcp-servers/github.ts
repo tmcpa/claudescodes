@@ -10,6 +10,8 @@ export const githubServer: MCPServer = {
     name: "Anthropic",
     url: "https://github.com/anthropics",
   },
+  repositoryUrl: "https://github.com/anthropics/mcp-servers/tree/main/src/github",
+  documentationUrl: "https://github.com/anthropics/mcp-servers#github",
   installCommand: "npm install -g @anthropic-ai/mcp-server-github",
   config: `{
   "mcpServers": {

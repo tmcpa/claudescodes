@@ -10,6 +10,8 @@ export const sequentialThinkingServer: MCPServer = {
     name: "Anthropic",
     url: "https://github.com/anthropics",
   },
+  repositoryUrl: "https://github.com/anthropics/mcp-servers/tree/main/src/sequentialthinking",
+  documentationUrl: "https://github.com/anthropics/mcp-servers#sequentialthinking",
   installCommand: "npm install -g @anthropic-ai/mcp-server-sequential-thinking",
   config: `{
   "mcpServers": {

@@ -10,6 +10,8 @@ export const memoryServer: MCPServer = {
     name: "Anthropic",
     url: "https://github.com/anthropics",
   },
+  repositoryUrl: "https://github.com/anthropics/mcp-servers/tree/main/src/memory",
+  documentationUrl: "https://github.com/anthropics/mcp-servers#memory",
   installCommand: "npm install -g @anthropic-ai/mcp-server-memory",
   config: `{
   "mcpServers": {

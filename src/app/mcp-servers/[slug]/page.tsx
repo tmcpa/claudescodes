@@ -6,7 +6,7 @@ import { Separator } from "@/components/ui/separator";
 import { CodeBlock } from "@/components/code-block";
 import { CopyButton } from "@/components/copy-button";
 import { mcpServers, getMCPServerBySlug } from "@/data/mcp-servers";
-import { ArrowLeft, Server, User, Terminal } from "lucide-react";
+import { ArrowLeft, Server, User, Terminal, ExternalLink, BookOpen, Github } from "lucide-react";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -83,6 +83,35 @@ export default async function MCPServerDetailPage(props: Props) {
             )}
           </span>
         </div>
+
+        {(server.repositoryUrl || server.documentationUrl) && (
+          <div className="flex flex-wrap gap-3">
+            {server.repositoryUrl && (
+              <a
+                href={server.repositoryUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
+              >
+                <Github className="h-4 w-4" />
+                View Source
+                <ExternalLink className="h-3 w-3" />
+              </a>
+            )}
+            {server.documentationUrl && (
+              <a
+                href={server.documentationUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
+              >
+                <BookOpen className="h-4 w-4" />
+                Documentation
+                <ExternalLink className="h-3 w-3" />
+              </a>
+            )}
+          </div>
+        )}
 
         <Separator />
 

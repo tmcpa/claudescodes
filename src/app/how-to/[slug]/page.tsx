@@ -4,7 +4,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { howTos, getHowToBySlug } from "@/data/how-to";
-import { ArrowLeft, BookOpen, User, Clock } from "lucide-react";
+import { ArrowLeft, BookOpen, User, Clock, ExternalLink, Github } from "lucide-react";
 import { cn } from "@/lib/utils";
 import ReactMarkdown from "react-markdown";
 import { CodeBlock } from "@/components/code-block";
@@ -103,6 +103,47 @@ export default async function HowToDetailPage(props: Props) {
             )}
           </span>
         </div>
+
+        {(howTo.sourceUrl || howTo.repositoryUrl || howTo.documentationUrl) && (
+          <div className="flex flex-wrap gap-3">
+            {howTo.sourceUrl && (
+              <a
+                href={howTo.sourceUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
+              >
+                <Github className="h-4 w-4" />
+                View Source
+                <ExternalLink className="h-3 w-3" />
+              </a>
+            )}
+            {howTo.repositoryUrl && (
+              <a
+                href={howTo.repositoryUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
+              >
+                <Github className="h-4 w-4" />
+                Repository
+                <ExternalLink className="h-3 w-3" />
+              </a>
+            )}
+            {howTo.documentationUrl && (
+              <a
+                href={howTo.documentationUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
+              >
+                <BookOpen className="h-4 w-4" />
+                Documentation
+                <ExternalLink className="h-3 w-3" />
+              </a>
+            )}
+          </div>
+        )}
 
         <Separator />
 

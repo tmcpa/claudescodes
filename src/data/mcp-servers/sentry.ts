@@ -10,6 +10,8 @@ export const sentryServer: MCPServer = {
     name: "Anthropic",
     url: "https://github.com/anthropics",
   },
+  repositoryUrl: "https://github.com/anthropics/mcp-servers/tree/main/src/sentry",
+  documentationUrl: "https://github.com/anthropics/mcp-servers#sentry",
   installCommand: "npm install -g @anthropic-ai/mcp-server-sentry",
   config: `{
   "mcpServers": {

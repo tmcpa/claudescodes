@@ -10,6 +10,8 @@ export const notionServer: MCPServer = {
     name: "Notion Labs",
     url: "https://github.com/makenotion",
   },
+  repositoryUrl: "https://github.com/makenotion/notion-mcp-server",
+  documentationUrl: "https://github.com/makenotion/notion-mcp-server#readme",
   installCommand: "npm install -g @notionhq/mcp-server-notion",
   config: `{
   "mcpServers": {

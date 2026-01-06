@@ -6,7 +6,7 @@ import { Separator } from "@/components/ui/separator";
 import { CodeBlock } from "@/components/code-block";
 import { CopyButton } from "@/components/copy-button";
 import { prompts, getPromptBySlug } from "@/data/prompts";
-import { ArrowLeft, FileText, User } from "lucide-react";
+import { ArrowLeft, FileText, User, ExternalLink, BookOpen, Github, FileCode } from "lucide-react";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -83,6 +83,47 @@ export default async function PromptDetailPage(props: Props) {
             )}
           </span>
         </div>
+
+        {(prompt.sourceUrl || prompt.repositoryUrl || prompt.documentationUrl) && (
+          <div className="flex flex-wrap gap-3">
+            {prompt.sourceUrl && (
+              <a
+                href={prompt.sourceUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
+              >
+                <FileCode className="h-4 w-4" />
+                View Source
+                <ExternalLink className="h-3 w-3" />
+              </a>
+            )}
+            {prompt.repositoryUrl && (
+              <a
+                href={prompt.repositoryUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
+              >
+                <Github className="h-4 w-4" />
+                Repository
+                <ExternalLink className="h-3 w-3" />
+              </a>
+            )}
+            {prompt.documentationUrl && (
+              <a
+                href={prompt.documentationUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
+              >
+                <BookOpen className="h-4 w-4" />
+                Documentation
+                <ExternalLink className="h-3 w-3" />
+              </a>
+            )}
+          </div>
+        )}
 
         <Separator />
 

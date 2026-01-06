@@ -10,6 +10,8 @@ export const sqliteServer: MCPServer = {
     name: "Anthropic",
     url: "https://github.com/anthropics",
   },
+  repositoryUrl: "https://github.com/anthropics/mcp-servers/tree/main/src/sqlite",
+  documentationUrl: "https://github.com/anthropics/mcp-servers#sqlite",
   installCommand: "npm install -g @anthropic-ai/mcp-server-sqlite",
   config: `{
   "mcpServers": {

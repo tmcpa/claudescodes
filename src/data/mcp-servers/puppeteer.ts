@@ -6,8 +6,11 @@ export const puppeteerServer: MCPServer = {
   description: "Automate browser interactions for web scraping and testing",
   tags: ["browser", "puppeteer", "automation", "scraping"],
   author: {
-    name: "MCP Community",
+    name: "Anthropic",
+    url: "https://github.com/anthropics",
   },
+  repositoryUrl: "https://github.com/anthropics/mcp-servers/tree/main/src/puppeteer",
+  documentationUrl: "https://github.com/anthropics/mcp-servers#puppeteer",
   installCommand: "npm install -g @anthropic-ai/mcp-server-puppeteer",
   config: `{
   "mcpServers": {

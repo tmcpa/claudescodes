@@ -10,6 +10,8 @@ export const filesystemServer: MCPServer = {
     name: "Anthropic",
     url: "https://github.com/anthropics",
   },
+  repositoryUrl: "https://github.com/anthropics/mcp-servers/tree/main/src/filesystem",
+  documentationUrl: "https://github.com/anthropics/mcp-servers#filesystem",
   installCommand: "npm install -g @anthropic-ai/mcp-server-filesystem",
   config: `{
   "mcpServers": {

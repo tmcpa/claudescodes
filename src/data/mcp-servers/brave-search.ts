@@ -10,6 +10,8 @@ export const braveSearchServer: MCPServer = {
     name: "Anthropic",
     url: "https://github.com/anthropics",
   },
+  repositoryUrl: "https://github.com/anthropics/mcp-servers/tree/main/src/brave-search",
+  documentationUrl: "https://github.com/anthropics/mcp-servers#brave-search",
   installCommand: "npm install -g @anthropic-ai/mcp-server-brave-search",
   config: `{
   "mcpServers": {
