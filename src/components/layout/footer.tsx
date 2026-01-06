@@ -19,7 +19,7 @@ export function Footer() {
             Documentation
           </Link>
           <Link
-            href="https://github.com/anthropics/claude-code"
+            href="https://github.com/tmcpa/claudescodes"
             target="_blank"
             rel="noopener noreferrer"
             className="hover:text-foreground transition-colors"
