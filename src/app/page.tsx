@@ -6,13 +6,15 @@ import { MCPCard } from "@/components/cards/mcp-card";
 import { HookCard } from "@/components/cards/hook-card";
 import { SkillCard } from "@/components/cards/skill-card";
 import { PluginCard } from "@/components/cards/plugin-card";
+import { HowToCard } from "@/components/cards/how-to-card";
 import { UniversalSearch } from "@/components/universal-search";
 import { getFeaturedPrompts } from "@/data/prompts";
 import { getFeaturedMCPServers } from "@/data/mcp-servers";
 import { getFeaturedHooks } from "@/data/hooks";
 import { getFeaturedSkills } from "@/data/skills";
 import { getFeaturedPlugins } from "@/data/plugins";
-import { Terminal, FileText, Server, Webhook, Zap, Puzzle, ArrowRight } from "lucide-react";
+import { getFeaturedHowTos } from "@/data/how-to";
+import { Terminal, FileText, Server, Webhook, Zap, Puzzle, BookOpen, ArrowRight } from "lucide-react";
 
 const categories = [
   {
@@ -45,6 +47,12 @@ const categories = [
     href: "/plugins",
     icon: Puzzle,
   },
+  {
+    name: "How To",
+    description: "Step-by-step tutorials and guides",
+    href: "/how-to",
+    icon: BookOpen,
+  },
 ];
 
 export default function Home() {
@@ -53,6 +61,7 @@ export default function Home() {
   const featuredHooks = getFeaturedHooks();
   const featuredSkills = getFeaturedSkills();
   const featuredPlugins = getFeaturedPlugins();
+  const featuredHowTos = getFeaturedHowTos();
 
   return (
     <div className="flex flex-col">
@@ -100,7 +109,7 @@ export default function Home() {
       {/* Categories Section */}
       <section className="container py-12 border-t">
         <h2 className="text-2xl font-bold mb-8">Browse by Category</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
           {categories.map((category) => (
             <Link key={category.href} href={category.href}>
               <Card className="h-full hover:bg-accent/50 transition-colors cursor-pointer">
@@ -212,6 +221,26 @@ export default function Home() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {featuredPlugins.slice(0, 3).map((plugin) => (
               <PluginCard key={plugin.slug} plugin={plugin} />
+            ))}
+          </div>
+        </section>
+      )}
+
+      {/* Featured How To Guides */}
+      {featuredHowTos.length > 0 && (
+        <section className="container py-12 border-t">
+          <div className="flex items-center justify-between mb-8">
+            <h2 className="text-2xl font-bold">How To Guides</h2>
+            <Button variant="ghost" asChild>
+              <Link href="/how-to">
+                View all
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </Link>
+            </Button>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {featuredHowTos.slice(0, 3).map((howTo) => (
+              <HowToCard key={howTo.slug} howTo={howTo} />
             ))}
           </div>
         </section>

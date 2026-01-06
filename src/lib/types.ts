@@ -58,4 +58,16 @@ export interface Plugin {
   featured?: boolean;
 }
 
-export type ContentItem = Prompt | MCPServer | Hook | Skill | Plugin;
+export interface HowTo {
+  slug: string;
+  title: string;
+  description: string;
+  content: string;
+  difficulty: "beginner" | "intermediate" | "advanced";
+  timeToComplete: string;
+  tags: string[];
+  author: Author;
+  featured?: boolean;
+}
+
+export type ContentItem = Prompt | MCPServer | Hook | Skill | Plugin | HowTo;
