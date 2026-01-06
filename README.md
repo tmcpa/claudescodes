@@ -16,7 +16,7 @@ A community-driven directory for Claude Code configurations. Find and share prom
 | **MCP Servers** | Model Context Protocol servers to extend Claude Code's capabilities |
 | **Hooks** | Pre/post tool-use automation scripts |
 | **Skills** | Custom slash commands and workflows |
-| **Settings** | Configuration examples for different use cases |
+| **Plugins** | Official and community plugins to extend functionality |
 
 ## Getting Started
 
@@ -57,7 +57,7 @@ src/
 │   ├── mcp-servers/       # MCP servers listing and detail pages
 │   ├── hooks/             # Hooks listing and detail pages
 │   ├── skills/            # Skills listing and detail pages
-│   └── settings/          # Settings examples page
+│   └── plugins/           # Plugins listing and detail pages
 ├── components/            # React components
 │   ├── cards/             # Card components for each content type
 │   ├── layout/            # Header, Footer
@@ -67,7 +67,7 @@ src/
 │   ├── mcp-servers/       # MCP server definitions
 │   ├── hooks/             # Hook definitions
 │   ├── skills/            # Skill definitions
-│   └── settings/          # Settings examples
+│   └── plugins/           # Plugin definitions
 └── lib/                   # Utilities and types
 ```
 

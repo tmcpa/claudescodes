@@ -47,14 +47,15 @@ export interface Skill {
   featured?: boolean;
 }
 
-export interface SettingsExample {
+export interface Plugin {
   slug: string;
   title: string;
   description: string;
-  config: string;
+  installCommand: string;
+  config?: string;
   tags: string[];
   author: Author;
   featured?: boolean;
 }
 
-export type ContentItem = Prompt | MCPServer | Hook | Skill | SettingsExample;
+export type ContentItem = Prompt | MCPServer | Hook | Skill | Plugin;

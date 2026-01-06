@@ -5,12 +5,14 @@ import { PromptCard } from "@/components/cards/prompt-card";
 import { MCPCard } from "@/components/cards/mcp-card";
 import { HookCard } from "@/components/cards/hook-card";
 import { SkillCard } from "@/components/cards/skill-card";
+import { PluginCard } from "@/components/cards/plugin-card";
 import { UniversalSearch } from "@/components/universal-search";
 import { getFeaturedPrompts } from "@/data/prompts";
 import { getFeaturedMCPServers } from "@/data/mcp-servers";
 import { getFeaturedHooks } from "@/data/hooks";
 import { getFeaturedSkills } from "@/data/skills";
-import { Terminal, FileText, Server, Webhook, Zap, Settings, ArrowRight } from "lucide-react";
+import { getFeaturedPlugins } from "@/data/plugins";
+import { Terminal, FileText, Server, Webhook, Zap, Puzzle, ArrowRight } from "lucide-react";
 
 const categories = [
   {
@@ -38,10 +40,10 @@ const categories = [
     icon: Zap,
   },
   {
-    name: "Settings",
-    description: "Configuration examples",
-    href: "/settings",
-    icon: Settings,
+    name: "Plugins",
+    description: "Extend Claude Code functionality",
+    href: "/plugins",
+    icon: Puzzle,
   },
 ];
 
@@ -50,6 +52,7 @@ export default function Home() {
   const featuredMCPServers = getFeaturedMCPServers();
   const featuredHooks = getFeaturedHooks();
   const featuredSkills = getFeaturedSkills();
+  const featuredPlugins = getFeaturedPlugins();
 
   return (
     <div className="flex flex-col">
@@ -189,6 +192,26 @@ export default function Home() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {featuredSkills.slice(0, 3).map((skill) => (
               <SkillCard key={skill.slug} skill={skill} />
+            ))}
+          </div>
+        </section>
+      )}
+
+      {/* Featured Plugins */}
+      {featuredPlugins.length > 0 && (
+        <section className="container py-12 border-t">
+          <div className="flex items-center justify-between mb-8">
+            <h2 className="text-2xl font-bold">Featured Plugins</h2>
+            <Button variant="ghost" asChild>
+              <Link href="/plugins">
+                View all
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </Link>
+            </Button>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {featuredPlugins.slice(0, 3).map((plugin) => (
+              <PluginCard key={plugin.slug} plugin={plugin} />
             ))}
           </div>
         </section>

@@ -13,7 +13,7 @@ const navigation = [
   { name: "MCP Servers", href: "/mcp-servers" },
   { name: "Hooks", href: "/hooks" },
   { name: "Skills", href: "/skills" },
-  { name: "Settings", href: "/settings" },
+  { name: "Plugins", href: "/plugins" },
 ];
 
 export function Header() {

@@ -4,16 +4,16 @@ import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
-import { Search, FileText, Server, Webhook, Zap, Settings } from "lucide-react";
+import { Search, FileText, Server, Webhook, Zap, Puzzle } from "lucide-react";
 import { prompts } from "@/data/prompts";
 import { mcpServers } from "@/data/mcp-servers";
 import { hooks } from "@/data/hooks";
 import { skills } from "@/data/skills";
-import { settingsExamples } from "@/data/settings";
+import { plugins } from "@/data/plugins";
 import { cn } from "@/lib/utils";
 
 interface SearchResult {
-  type: "prompt" | "mcp-server" | "hook" | "skill" | "setting";
+  type: "prompt" | "mcp-server" | "hook" | "skill" | "plugin";
   slug: string;
   title: string;
   description: string;
@@ -25,7 +25,7 @@ const typeConfig = {
   "mcp-server": { icon: Server, label: "MCP Server", href: "/mcp-servers", color: "text-green-500" },
   hook: { icon: Webhook, label: "Hook", href: "/hooks", color: "text-orange-500" },
   skill: { icon: Zap, label: "Skill", href: "/skills", color: "text-purple-500" },
-  setting: { icon: Settings, label: "Setting", href: "/settings", color: "text-gray-500" },
+  plugin: { icon: Puzzle, label: "Plugin", href: "/plugins", color: "text-pink-500" },
 };
 
 export function UniversalSearch() {
@@ -114,19 +114,19 @@ export function UniversalSearch() {
       }
     });
 
-    // Search settings
-    settingsExamples.forEach((s) => {
+    // Search plugins
+    plugins.forEach((p) => {
       if (
-        s.title.toLowerCase().includes(searchQuery) ||
-        s.description.toLowerCase().includes(searchQuery) ||
-        s.tags.some((t) => t.toLowerCase().includes(searchQuery))
+        p.title.toLowerCase().includes(searchQuery) ||
+        p.description.toLowerCase().includes(searchQuery) ||
+        p.tags.some((t) => t.toLowerCase().includes(searchQuery))
       ) {
         allResults.push({
-          type: "setting",
-          slug: s.slug,
-          title: s.title,
-          description: s.description,
-          tags: s.tags,
+          type: "plugin",
+          slug: p.slug,
+          title: p.title,
+          description: p.description,
+          tags: p.tags,
         });
       }
     });
@@ -164,10 +164,7 @@ export function UniversalSearch() {
         if (results[selectedIndex]) {
           const result = results[selectedIndex];
           const config = typeConfig[result.type];
-          const href = result.type === "setting"
-            ? `${config.href}#${result.slug}`
-            : `${config.href}/${result.slug}`;
-          window.location.href = href;
+          window.location.href = `${config.href}/${result.slug}`;
         }
         break;
       case "Escape":
@@ -179,9 +176,7 @@ export function UniversalSearch() {
 
   const getResultHref = (result: SearchResult) => {
     const config = typeConfig[result.type];
-    return result.type === "setting"
-      ? `${config.href}#${result.slug}`
-      : `${config.href}/${result.slug}`;
+    return `${config.href}/${result.slug}`;
   };
 
   return (
@@ -191,7 +186,7 @@ export function UniversalSearch() {
         <Input
           ref={inputRef}
           type="search"
-          placeholder="Search prompts, MCP servers, hooks, skills..."
+          placeholder="Search prompts, MCP servers, hooks, skills, plugins..."
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           onFocus={() => query.length >= 2 && results.length > 0 && setIsOpen(true)}
