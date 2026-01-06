@@ -11,7 +11,7 @@ export function Footer() {
         </div>
         <div className="flex items-center gap-4 text-sm text-muted-foreground">
           <Link
-            href="https://docs.anthropic.com/en/docs/claude-code"
+            href="https://code.claude.com/docs/en/overview"
             target="_blank"
             rel="noopener noreferrer"
             className="hover:text-foreground transition-colors"
