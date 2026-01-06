@@ -5,8 +5,11 @@ import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { CodeBlock } from "@/components/code-block";
 import { CopyButton } from "@/components/copy-button";
+import { ItemJsonLd, BreadcrumbJsonLd } from "@/components/json-ld";
 import { prompts, getPromptBySlug } from "@/data/prompts";
 import { ArrowLeft, FileText, User } from "lucide-react";
+
+const BASE_URL = "https://claudedirectory.org";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -23,9 +26,26 @@ export async function generateMetadata(props: Props) {
   const prompt = getPromptBySlug(params.slug);
   if (!prompt) return { title: "Prompt Not Found" };
 
+  const url = `${BASE_URL}/prompts/${prompt.slug}`;
+
   return {
-    title: `${prompt.title} - Claude Code Directory`,
+    title: `${prompt.title} - Claude Code Prompt`,
     description: prompt.description,
+    keywords: [...prompt.tags, "claude code", "prompt", "CLAUDE.md"],
+    openGraph: {
+      title: `${prompt.title} - Claude Code Prompt`,
+      description: prompt.description,
+      url,
+      type: "article",
+    },
+    twitter: {
+      card: "summary",
+      title: `${prompt.title} - Claude Code Prompt`,
+      description: prompt.description,
+    },
+    alternates: {
+      canonical: url,
+    },
   };
 }
 
@@ -37,8 +57,25 @@ export default async function PromptDetailPage(props: Props) {
     notFound();
   }
 
+  const pageUrl = `${BASE_URL}/prompts/${prompt.slug}`;
+
   return (
     <div className="container py-8 max-w-4xl">
+      <ItemJsonLd
+        type="SoftwareApplication"
+        name={prompt.title}
+        description={prompt.description}
+        url={pageUrl}
+        author={prompt.author}
+        tags={prompt.tags}
+      />
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Home", url: BASE_URL },
+          { name: "Prompts", url: `${BASE_URL}/prompts` },
+          { name: prompt.title, url: pageUrl },
+        ]}
+      />
       <Button variant="ghost" size="sm" asChild className="mb-6">
         <Link href="/prompts">
           <ArrowLeft className="mr-2 h-4 w-4" />

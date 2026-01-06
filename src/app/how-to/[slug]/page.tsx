@@ -3,11 +3,14 @@ import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
+import { ItemJsonLd, BreadcrumbJsonLd } from "@/components/json-ld";
 import { howTos, getHowToBySlug } from "@/data/how-to";
 import { ArrowLeft, BookOpen, User, Clock } from "lucide-react";
 import { cn } from "@/lib/utils";
 import ReactMarkdown from "react-markdown";
 import { CodeBlock } from "@/components/code-block";
+
+const BASE_URL = "https://claudedirectory.org";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -24,9 +27,26 @@ export async function generateMetadata(props: Props) {
   const howTo = getHowToBySlug(params.slug);
   if (!howTo) return { title: "Guide Not Found" };
 
+  const url = `${BASE_URL}/how-to/${howTo.slug}`;
+
   return {
-    title: `${howTo.title} - Claude Code Directory`,
+    title: `${howTo.title} - Claude Code Guide`,
     description: howTo.description,
+    keywords: [...howTo.tags, "claude code", "guide", "tutorial", "how to"],
+    openGraph: {
+      title: `${howTo.title} - Claude Code Guide`,
+      description: howTo.description,
+      url,
+      type: "article",
+    },
+    twitter: {
+      card: "summary",
+      title: `${howTo.title} - Claude Code Guide`,
+      description: howTo.description,
+    },
+    alternates: {
+      canonical: url,
+    },
   };
 }
 
@@ -44,8 +64,25 @@ export default async function HowToDetailPage(props: Props) {
     notFound();
   }
 
+  const pageUrl = `${BASE_URL}/how-to/${howTo.slug}`;
+
   return (
     <div className="container py-8 max-w-4xl">
+      <ItemJsonLd
+        type="HowTo"
+        name={howTo.title}
+        description={howTo.description}
+        url={pageUrl}
+        author={howTo.author}
+        tags={howTo.tags}
+      />
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Home", url: BASE_URL },
+          { name: "How-To Guides", url: `${BASE_URL}/how-to` },
+          { name: howTo.title, url: pageUrl },
+        ]}
+      />
       <Button variant="ghost" size="sm" asChild className="mb-6">
         <Link href="/how-to">
           <ArrowLeft className="mr-2 h-4 w-4" />

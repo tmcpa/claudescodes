@@ -5,8 +5,11 @@ import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { CodeBlock } from "@/components/code-block";
 import { CopyButton } from "@/components/copy-button";
+import { ItemJsonLd, BreadcrumbJsonLd } from "@/components/json-ld";
 import { mcpServers, getMCPServerBySlug } from "@/data/mcp-servers";
 import { ArrowLeft, Server, User, Terminal } from "lucide-react";
+
+const BASE_URL = "https://claudedirectory.org";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -23,9 +26,26 @@ export async function generateMetadata(props: Props) {
   const server = getMCPServerBySlug(params.slug);
   if (!server) return { title: "MCP Server Not Found" };
 
+  const url = `${BASE_URL}/mcp-servers/${server.slug}`;
+
   return {
-    title: `${server.title} - Claude Code Directory`,
+    title: `${server.title} MCP Server - Claude Code`,
     description: server.description,
+    keywords: [...server.tags, "claude code", "mcp server", "model context protocol"],
+    openGraph: {
+      title: `${server.title} MCP Server - Claude Code`,
+      description: server.description,
+      url,
+      type: "article",
+    },
+    twitter: {
+      card: "summary",
+      title: `${server.title} MCP Server - Claude Code`,
+      description: server.description,
+    },
+    alternates: {
+      canonical: url,
+    },
   };
 }
 
@@ -37,8 +57,25 @@ export default async function MCPServerDetailPage(props: Props) {
     notFound();
   }
 
+  const pageUrl = `${BASE_URL}/mcp-servers/${server.slug}`;
+
   return (
     <div className="container py-8 max-w-4xl">
+      <ItemJsonLd
+        type="SoftwareApplication"
+        name={server.title}
+        description={server.description}
+        url={pageUrl}
+        author={server.author}
+        tags={server.tags}
+      />
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Home", url: BASE_URL },
+          { name: "MCP Servers", url: `${BASE_URL}/mcp-servers` },
+          { name: server.title, url: pageUrl },
+        ]}
+      />
       <Button variant="ghost" size="sm" asChild className="mb-6">
         <Link href="/mcp-servers">
           <ArrowLeft className="mr-2 h-4 w-4" />

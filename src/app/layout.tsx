@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import Script from "next/script";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
+import { WebsiteJsonLd } from "@/components/json-ld";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -15,10 +16,16 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const BASE_URL = "https://claudedirectory.org";
+
 export const metadata: Metadata = {
-  title: "Claude Directory",
+  metadataBase: new URL(BASE_URL),
+  title: {
+    default: "Claude Directory - Prompts, MCP Servers, Hooks & Plugins for Claude Code",
+    template: "%s | Claude Directory",
+  },
   description:
-    "Find the best prompts, MCP servers, hooks, and skills for Claude Code. A community-driven directory for Claude Code configurations.",
+    "Find the best prompts, MCP servers, hooks, skills, and plugins for Claude Code. A community-driven directory for Claude Code configurations.",
   keywords: [
     "claude code",
     "claude",
@@ -28,7 +35,43 @@ export const metadata: Metadata = {
     "prompts",
     "hooks",
     "skills",
+    "plugins",
+    "claude code prompts",
+    "mcp servers",
+    "claude code hooks",
+    "ai coding assistant",
   ],
+  authors: [{ name: "Claude Directory" }],
+  creator: "Claude Directory",
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: BASE_URL,
+    siteName: "Claude Directory",
+    title: "Claude Directory - Prompts, MCP Servers, Hooks & Plugins for Claude Code",
+    description:
+      "Find the best prompts, MCP servers, hooks, skills, and plugins for Claude Code. A community-driven directory for Claude Code configurations.",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Claude Directory - Prompts, MCP Servers, Hooks & Plugins for Claude Code",
+    description:
+      "Find the best prompts, MCP servers, hooks, skills, and plugins for Claude Code. A community-driven directory for Claude Code configurations.",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+  alternates: {
+    canonical: BASE_URL,
+  },
 };
 
 export default function RootLayout({
@@ -55,6 +98,11 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col`}
       >
+        <WebsiteJsonLd
+          url={BASE_URL}
+          name="Claude Directory"
+          description="Find the best prompts, MCP servers, hooks, skills, and plugins for Claude Code. A community-driven directory for Claude Code configurations."
+        />
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />

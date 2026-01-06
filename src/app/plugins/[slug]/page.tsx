@@ -5,8 +5,11 @@ import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { CodeBlock } from "@/components/code-block";
 import { CopyButton } from "@/components/copy-button";
+import { ItemJsonLd, BreadcrumbJsonLd } from "@/components/json-ld";
 import { plugins, getPluginBySlug } from "@/data/plugins";
 import { ArrowLeft, Puzzle, User, Terminal } from "lucide-react";
+
+const BASE_URL = "https://claudedirectory.org";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -23,9 +26,26 @@ export async function generateMetadata(props: Props) {
   const plugin = getPluginBySlug(params.slug);
   if (!plugin) return { title: "Plugin Not Found" };
 
+  const url = `${BASE_URL}/plugins/${plugin.slug}`;
+
   return {
-    title: `${plugin.title} - Claude Code Directory`,
+    title: `${plugin.title} Plugin - Claude Code`,
     description: plugin.description,
+    keywords: [...plugin.tags, "claude code", "plugin", "extension"],
+    openGraph: {
+      title: `${plugin.title} Plugin - Claude Code`,
+      description: plugin.description,
+      url,
+      type: "article",
+    },
+    twitter: {
+      card: "summary",
+      title: `${plugin.title} Plugin - Claude Code`,
+      description: plugin.description,
+    },
+    alternates: {
+      canonical: url,
+    },
   };
 }
 
@@ -37,8 +57,25 @@ export default async function PluginDetailPage(props: Props) {
     notFound();
   }
 
+  const pageUrl = `${BASE_URL}/plugins/${plugin.slug}`;
+
   return (
     <div className="container py-8 max-w-4xl">
+      <ItemJsonLd
+        type="SoftwareApplication"
+        name={plugin.title}
+        description={plugin.description}
+        url={pageUrl}
+        author={plugin.author}
+        tags={plugin.tags}
+      />
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Home", url: BASE_URL },
+          { name: "Plugins", url: `${BASE_URL}/plugins` },
+          { name: plugin.title, url: pageUrl },
+        ]}
+      />
       <Button variant="ghost" size="sm" asChild className="mb-6">
         <Link href="/plugins">
           <ArrowLeft className="mr-2 h-4 w-4" />

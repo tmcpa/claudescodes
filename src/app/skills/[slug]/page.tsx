@@ -5,8 +5,11 @@ import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { CodeBlock } from "@/components/code-block";
 import { CopyButton } from "@/components/copy-button";
+import { ItemJsonLd, BreadcrumbJsonLd } from "@/components/json-ld";
 import { skills, getSkillBySlug } from "@/data/skills";
 import { ArrowLeft, Zap, User } from "lucide-react";
+
+const BASE_URL = "https://claudedirectory.org";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -23,9 +26,26 @@ export async function generateMetadata(props: Props) {
   const skill = getSkillBySlug(params.slug);
   if (!skill) return { title: "Skill Not Found" };
 
+  const url = `${BASE_URL}/skills/${skill.slug}`;
+
   return {
-    title: `${skill.title} - Claude Code Directory`,
+    title: `${skill.title} Skill - Claude Code`,
     description: skill.description,
+    keywords: [...skill.tags, "claude code", "skill", "slash command"],
+    openGraph: {
+      title: `${skill.title} Skill - Claude Code`,
+      description: skill.description,
+      url,
+      type: "article",
+    },
+    twitter: {
+      card: "summary",
+      title: `${skill.title} Skill - Claude Code`,
+      description: skill.description,
+    },
+    alternates: {
+      canonical: url,
+    },
   };
 }
 
@@ -37,8 +57,25 @@ export default async function SkillDetailPage(props: Props) {
     notFound();
   }
 
+  const pageUrl = `${BASE_URL}/skills/${skill.slug}`;
+
   return (
     <div className="container py-8 max-w-4xl">
+      <ItemJsonLd
+        type="SoftwareApplication"
+        name={skill.title}
+        description={skill.description}
+        url={pageUrl}
+        author={skill.author}
+        tags={skill.tags}
+      />
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Home", url: BASE_URL },
+          { name: "Skills", url: `${BASE_URL}/skills` },
+          { name: skill.title, url: pageUrl },
+        ]}
+      />
       <Button variant="ghost" size="sm" asChild className="mb-6">
         <Link href="/skills">
           <ArrowLeft className="mr-2 h-4 w-4" />

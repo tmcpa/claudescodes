@@ -5,8 +5,11 @@ import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { CodeBlock } from "@/components/code-block";
 import { CopyButton } from "@/components/copy-button";
+import { ItemJsonLd, BreadcrumbJsonLd } from "@/components/json-ld";
 import { hooks, getHookBySlug } from "@/data/hooks";
 import { ArrowLeft, Webhook, User } from "lucide-react";
+
+const BASE_URL = "https://claudedirectory.org";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -23,9 +26,26 @@ export async function generateMetadata(props: Props) {
   const hook = getHookBySlug(params.slug);
   if (!hook) return { title: "Hook Not Found" };
 
+  const url = `${BASE_URL}/hooks/${hook.slug}`;
+
   return {
-    title: `${hook.title} - Claude Code Directory`,
+    title: `${hook.title} Hook - Claude Code`,
     description: hook.description,
+    keywords: [...hook.tags, "claude code", "hook", "automation", hook.event],
+    openGraph: {
+      title: `${hook.title} Hook - Claude Code`,
+      description: hook.description,
+      url,
+      type: "article",
+    },
+    twitter: {
+      card: "summary",
+      title: `${hook.title} Hook - Claude Code`,
+      description: hook.description,
+    },
+    alternates: {
+      canonical: url,
+    },
   };
 }
 
@@ -36,6 +56,8 @@ export default async function HookDetailPage(props: Props) {
   if (!hook) {
     notFound();
   }
+
+  const pageUrl = `${BASE_URL}/hooks/${hook.slug}`;
 
   const hookConfig = JSON.stringify(
     {
@@ -54,6 +76,21 @@ export default async function HookDetailPage(props: Props) {
 
   return (
     <div className="container py-8 max-w-4xl">
+      <ItemJsonLd
+        type="SoftwareApplication"
+        name={hook.title}
+        description={hook.description}
+        url={pageUrl}
+        author={hook.author}
+        tags={hook.tags}
+      />
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Home", url: BASE_URL },
+          { name: "Hooks", url: `${BASE_URL}/hooks` },
+          { name: hook.title, url: pageUrl },
+        ]}
+      />
       <Button variant="ghost" size="sm" asChild className="mb-6">
         <Link href="/hooks">
           <ArrowLeft className="mr-2 h-4 w-4" />
