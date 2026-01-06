@@ -1,4 +1,4 @@
-# Contributing to Claude Code Directory
+# Contributing to Claude's Codes
 
 Thank you for your interest in contributing! This guide will help you add new content or improve the site.
 

@@ -1,4 +1,4 @@
-# Claude Code Directory
+# Claude's Codes
 
 A community-driven directory for Claude Code configurations. Find and share prompts, MCP servers, hooks, skills, and settings.
 
